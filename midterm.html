@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT CP12</title>
+    <link rel="stylesheet" href="sem.css">
+    
+    
+</head>
+
+
+<body>
+ 
+  <h1> MIDTERM</h1>
+  <center>
+  <div class="menu">
+   <h3 class="title"> 4-PIN NUMBER</h3>
+    <form id="pinForm">
+        <label for="pin">Enter the 4 digit PIN number:</label>
+        <input type="text" id="pin" name="pin" maxlength="4" required>
+        <input type="submit" value="Submit">
+    </form>
+    <p id="result"></p>
+  
+</div>
+
+    <script>
+        document.getElementById('pinForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const PIN = document.getElementById('pin').value;
+            const result = document.getElementById('result');
+
+            if (PIN === "2222") {
+                result.textContent = "while loop";
+            } else if (PIN === "4444") {
+                result.textContent = "do while loop";
+            } else if (PIN === "6666") {
+                result.textContent = "for loop";
+            } else if (PIN.length === 4) {
+                let allDigits = true;
+                for (let i = 0; i < PIN.length; i++) {
+                    if (!isdigit(PIN[i])) {
+                        allDigits = false;
+                        break;
+                    }
+                }
+                if (allDigits) {
+                    result.textContent = "PIN accept";
+                } else {
+                    result.textContent = "PIN denied";
+                }
+            } else {
+                result.textContent = "PIN denied";
+            }
+        });
+
+        function isdigit(char) {
+            return /\d/.test(char);
+        }
+    </script>
+    <br>
+    <button><a href="choose.html">Back to home</a></button>
+  </center>
+</body>
+</html>

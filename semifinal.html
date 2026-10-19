@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT CP12</title>
+    <link rel="stylesheet" href="sem.css">
+
+    </style>
+</head>
+<body>
+<center>
+        <h2>SEMIFINAL</h2>
+<div class="container">
+    <div class="menu">
+    
+      
+      
+        <p class="title"><b>FILE HANDLING</b></p>
+        
+        <p> Create<br>
+         Write<br>
+        Read<br>
+         Delete <br>
+         Stop </p>
+        <p class="title"></p>
+        
+    </div>
+    
+    <form id="fileForm">
+
+      <br>
+      <br>
+        <label for="select">Select (Create, Write, Read, Delete, Stop): </label>
+        <br>
+        <input type="text" id="select" name="select" required placeholder="Select from the given option"><br><br>
+        
+        <div id="filenameSection">
+            <label for="filename">Enter a file name: </label><br>
+            <input type="text" id="filename" name="filename" placeholder="Enter a file name"><br><br>
+        </div>
+        
+        <div id="textSection" style="display: none;">
+            <label for="text" >Enter text to write to the file: </label>
+            <textarea id="text" name="text" rows="4" cols="50"></textarea><br><br>
+        </div>
+       
+        <button type="button" onclick="handleFile()">Submit    </button>
+        
+        <button type="button" onclick="stopProgram()">  Stop</button>
+        
+    </form>
+    
+    <p id="output"></p>
+</div>
+
+<script>
+    const filenameSection = document.getElementById('filenameSection');
+    const textSection = document.getElementById('textSection');
+    const output = document.getElementById('output');
+
+    function handleFile() {
+        const select = document.getElementById('select').value.toLowerCase();
+        const filename = document.getElementById('filename').value;
+        const text = document.getElementById('text').value;
+
+        switch(select) {
+            case 'create':
+                if (!filename) {
+                    output.innerText = "Filename is required.";
+                    return;
+                }
+                if (localStorage.getItem(filename) !== null) {
+                    output.innerText = `${filename} already exists.`;
+                } else {
+                    localStorage.setItem(filename, '');
+                    output.innerText = `${filename} created successfully.`;
+                }
+                break;
+            case 'write':
+                if (!filename) {
+                    output.innerText = "Filename is required.";
+                    return;
+                }
+                if (localStorage.getItem(filename) === null) {
+                    output.innerText = `${filename} doesn't exist.`;
+                } else {
+                    localStorage.setItem(filename, text);
+                    output.innerText = `Text written to ${filename} successfully.`;
+                }
+                break;
+            case 'read':
+                if (!filename) {
+                    output.innerText = "Filename is required.";
+                    return;
+                }
+                const fileContent = localStorage.getItem(filename);
+                if (fileContent === null) {
+                    output.innerText = `Unable to open file ${filename}.`;
+                } else {
+                    output.innerText = `Content of ${filename}: \n${fileContent}`;
+                }
+                break;
+            case 'delete':
+                if (!filename) {
+                    output.innerText = "Filename is required.";
+                    return;
+                }
+                if (localStorage.getItem(filename) !== null) {
+                    localStorage.removeItem(filename);
+                    output.innerText = `${filename} deleted successfully.`;
+                } else {
+                    output.innerText = `${filename} doesn't exist.`;
+                }
+                break;
+            case 'stop':
+                stopProgram();
+                break;
+            default:
+                output.innerText = "Invalid option selected.";
+        }
+    }
+
+    function stopProgram() {
+        output.innerText = "Program stopped.";
+    }
+
+    document.getElementById('select').addEventListener('input', function() {
+        const select = this.value.toLowerCase();
+        if (select === 'write') {
+            textSection.style.display = 'block';
+        } else {
+            textSection.style.display = 'none';
+        }
+    });
+</script>
+<button><a href="choose.html">Back to home</a></button>
+</center>
+</body>
+</html>

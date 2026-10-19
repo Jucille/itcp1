@@ -1,0 +1,83 @@
+*{
+  background-image: url(pink.jpg);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+
+body {
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #F0F0F0;
+    flex-direction: column;
+}
+
+.container {
+    padding-right: 0px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 1.5px;
+    width: 300px;
+    text-align: center;
+    
+}
+ .menu {
+    padding-right: 0px;
+    background-color: white;
+    padding: 30px;
+    
+    
+    
+    text-align: center;
+    
+}
+
+.login-form, .menu {
+    padding-right: 0px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 1.5px;
+    width: 300px;
+    text-align: center;
+    
+}
+
+.login-form h2, .menu h2 {
+    margin-bottom: 20px;
+}
+
+.login-form input, .menu a {
+    width: 100%;
+    padding:10px;
+    margin: 10px 0;
+    border: 1px solid #232121;
+    border-radius: 4px;
+    font-size: 20px;
+   
+}
+
+#username , #password{
+  box-shadow: 0 0 1px;
+  width: 75%;
+}
+
+.login-form button {
+    width: 25%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #5CB85C;
+    color: black;
+    font-size: 12px;
+    box-shadow: 0 0 1px;
+}
+
+
+/*PRELIM*/
+h2{
+  font-size: 50px;
+}
